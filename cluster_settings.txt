@@ -1,0 +1,56 @@
+Scenario.name = DTN_TCC
+Scenario.simulateConnections = true
+Scenario.updateInterval = 0.1
+Scenario.endTime = 43k
+
+firstinterface.type = SimpleBroadcastInterface
+firstinterface.transmitSpeed = 300k
+firstinterface.transmitRange = 10
+
+
+Scenario.nrofHostGroups = 2
+
+
+Group.movementModel = ClusterMovement
+Group.router = SprayAndWaitRouter
+Group.bufferSize = 10M
+Group.waitTime = 0, 120
+Group.nrofInterfaces = 1
+Group.interface1 = firstinterface
+Group.speed = 0.5, 1.5
+Group.nrofHosts = 10
+Group.nrofApplications = 0
+
+MapBasedMovement.nrofMapFiles = 2
+MapBasedMovement.mapFile1 = data/cluster/ferryroute.wkt
+MapBasedMovement.mapFile2 = data/cluster/origin.wkt
+
+
+Events.nrof = 1
+Events1.class = MessageEventGenerator
+Events1.interval = 25,35
+Events1.size = 50k,150k
+Events1.hosts = 0,120
+Events1.prefix = M
+
+
+
+MovementModel.rngSeed = 1
+MovementModel.worldSize = 4500, 3400
+MovementModel.warmup = 1000
+
+
+Report.nrofReports = 1
+Report.warmup = 0
+Report.reportDir = reports/
+Report.report1 = MessageStatsReport
+
+Optimization.connectionAlg = 2
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+GUI.UnderlayImage.fileName = data/helsinki_underlay.png
+GUI.UnderlayImage.offset = 64, 20
+GUI.UnderlayImage.scale = 4.75
+GUI.UnderlayImage.rotate = -0.015
+GUI.EventLogPanel.nrofEvents = 30
