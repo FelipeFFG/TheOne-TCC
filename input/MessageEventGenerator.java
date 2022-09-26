@@ -77,18 +77,18 @@ public class MessageEventGenerator implements EventQueue {
 		this.hostRange = s.getCsvInts(HOST_RANGE_S, 2);
 		this.idPrefix = s.getSetting(MESSAGE_ID_PREFIX_S);
 		
-		if (s.contains(MESSAGE_TIME_S)) {
+		if (s.contains(MESSAGE_TIME_S)) 
 			this.msgTime = s.getCsvDoubles(MESSAGE_TIME_S, 2);
-		}
-		else {
+		
+		else 
 			this.msgTime = null;
-		}
-		if (s.contains(TO_HOST_RANGE_S)) {
+		
+		if (s.contains(TO_HOST_RANGE_S)) 
 			this.toHostRange = s.getCsvInts(TO_HOST_RANGE_S, 2);
-		}
-		else {
+		
+		else 
 			this.toHostRange = null;
-		}
+		
 		
 		/* if prefix is unique, so will be the rng's sequence */
 		this.rng = new Random(idPrefix.hashCode());
