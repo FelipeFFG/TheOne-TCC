@@ -11,9 +11,9 @@ btInterface.type = SimpleBroadcastInterface
 btInterface.transmitSpeed = 250k
 btInterface.transmitRange = 30
 
-Scenario.nrofHostGroups = 2
+Scenario.nrofHostGroups = 4
 
-#GRUPO - CARRO
+#GRUPO - CARRO LENTO
 Group.movementModel = ShortestPathMapBasedMovement
 Group.router = SprayAndWaitRouter
 Group.bufferSize = 5M
@@ -22,10 +22,22 @@ Group.nrofInterfaces = 1
 Group.interface1 = btInterface
 Group.speed = 0.5, 1.5
 Group.msgTtl = 300
-Group.nrofHosts = 40
-Group1.groupID = Carro
+Group.nrofHosts = 10
+Group1.groupID = SlowCar
 
-#GRUPO- ACIDENTE ENTRE DOIS CARROS
+#GRUPO - CARRO RAPIDO
+Group3.movementModel = ShortestPathMapBasedMovement
+Group3.router = SprayAndWaitRouter
+Group3.bufferSize = 5M
+Group3.waitTime = 0, 120
+Group3.nrofInterfaces = 1
+Group3.interface1 = btInterface
+Group3.msgTtl = 300
+Group3.nrofHosts = 10
+Group3.speed = 1.5, 3.0
+Group3.groupID = FastCar
+
+#GRUPO- ACIDENTE ENTRE DOIS CARROS 01
 Group2.movementModel = ShortestPathMapBasedMovement
 Group2.router = SprayAndWaitRouter
 Group2.bufferSize = 5M
@@ -35,14 +47,26 @@ Group2.interface1 = btInterface
 Group2.speed = 0.0, 0.0
 Group2.msgTtl = 300
 Group2.nrofHosts = 1
-Group2.groupID = Reportagem
+Group2.groupID = ReportEvent01
+
+#GRUPO- ACIDENTE ENTRE DOIS CARROS 02
+Group4.movementModel = ShortestPathMapBasedMovement
+Group4.router = SprayAndWaitRouter
+Group4.bufferSize = 5M
+Group4.waitTime = 0, 120
+Group4.nrofInterfaces = 1
+Group4.interface1 = btInterface
+Group4.speed = 0.0, 0.0
+Group4.msgTtl = 300
+Group4.nrofHosts = 1
+Group4.groupID = ReportEvent02
 
 
 Events.nrof = 1
 Events1.class = MessageEventGenerator
 Events1.interval = 25,35
 Events1.size = 500k,1M
-Events1.hosts = 0,041
+Events1.hosts = 0,022
 Events1.prefix = M
 
 MovementModel.rngSeed = 1
