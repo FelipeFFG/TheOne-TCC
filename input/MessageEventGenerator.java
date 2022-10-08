@@ -138,9 +138,10 @@ public class MessageEventGenerator implements EventQueue {
 	 * @return A random host address
 	 */
 	protected int drawHostAddress(int hostRange[]) {
-		if (hostRange[1] == hostRange[0]) {
+		if (hostRange[1] == hostRange[0])
 			return hostRange[0];
-		}
+		for (int i = 0; i < hostRange.length; i++)
+			System.out.println(hostRange[i]);
 		return hostRange[0] + rng.nextInt(hostRange[1] - hostRange[0]);
 	}
 	
