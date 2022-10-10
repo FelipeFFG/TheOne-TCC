@@ -1,2 +1,2 @@
 Scenario.name = Epidemic
-Group.router = EpidemicOracleRouter
+Group.router = EpidemicRouter
