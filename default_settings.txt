@@ -12,7 +12,7 @@ highspeedInterface.type = SimpleBroadcastInterface
 highspeedInterface.transmitSpeed = 10M
 highspeedInterface.transmitRange = 50
 
-Scenario.nrofHostGroups = 2
+Scenario.nrofHostGroups = 3
 
 #CONFIGURACOE GERAIS DOS GRUPOS
 Group.movementModel = ShortestPathMapBasedMovement
@@ -23,21 +23,27 @@ Group.nrofInterfaces = 1
 Group.interface1 = btInterface
 Group.msgTtl = 300
 
-
-#GRUPO - CARRO
+#GRUPO- REFERENTE A REPORTAGEM DE PROBLEMAS NA VIA
 Group1.speed = 0.0,0.0
+Group1.movementModel = StationaryMovement
+Group1.nodeLocation = 724,691
 Group1.nrofHosts = 1
 Group1.groupID = Reportagem
 
-#GRUPO- REFERENTE A REPORTAGEM DE PROBLEMAS NA VIA
+#GRUPO - CARRO
 Group2.speed = 0.5, 1.5
 Group2.msgTtl = 300
 Group2.nrofHosts = 5
 Group2.groupID = Carro
 
+#GRUPO - RECEPTOR
+Group3.speed = 0.0,0.0
+Group3.nrofHosts = 1
+Group3.groupID = Receptor
+
 Events.nrof = 1 			
 Events1.class = MessageEventGenerator
-Events1.interval = 30, 30
+Events1.interval = 400, 400
 Events1.size = 500k, 1M
 Events1.hosts = 0,4			
 Events1.prefix = M
@@ -51,14 +57,26 @@ MapBasedMovement.mapFile2 = data/main_roads.wkt
 MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
 MapBasedMovement.mapFile4 = data/shops.wkt
 
-
 #REPORTAGEM DAS MENSAGENS
-Report.nrofReports = 1
+Report.nrofReports = 12
+Report.granularity = 1
 Report.warmup = 0
-Report.reportDir = reports/
-Report.report1 = MessageLocationReport
-MessageLocationReport.granularity = 1
-MessageLocationReport.messages = 1
+Report.messages = M21, M100, M350, M444, M560
+Report.reportDir = reports/.
+Report.report1 = AdjacencyGraphvizReport
+Report.report2 = ContactsPerHourReport
+Report.report3 = ContactTimesReport
+Report.report4 = CreatedMessagesReport
+Report.report5 = DeliveredMessagesReport
+Report.report6 = EventLogReport
+Report.report7 = MessageDelayReport
+Report.report8 = MessageDeliveryReport
+Report.report9 = MessageGraphvizReport
+Report.report10 = MessageReport
+Report.report11 = MessageStatsReport
+Report.report12 = TotalContactTimeReport
+#Report.report1 = MessageLocationReport
+
 
 #CONFIGURAÇÕES DE ALGUMAS CONFIGS DE PROTOCOLOS
 ProphetRouter.secondsInTimeUnit = 30
