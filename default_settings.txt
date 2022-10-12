@@ -8,10 +8,6 @@ btInterface.type = SimpleBroadcastInterface
 btInterface.transmitSpeed = 250k
 btInterface.transmitRange = 3
 
-highspeedInterface.type = SimpleBroadcastInterface
-highspeedInterface.transmitSpeed = 10M
-highspeedInterface.transmitRange = 50
-
 Scenario.nrofHostGroups = 3
 
 #CONFIGURACOE GERAIS DOS GRUPOS
@@ -25,15 +21,14 @@ Group.msgTtl = 300
 
 #GRUPO- REFERENTE A REPORTAGEM DE PROBLEMAS NA VIA
 Group1.speed = 0.0,0.0
-Group1.movementModel = StationaryMovement
-Group1.nodeLocation = 724,691
 Group1.nrofHosts = 1
 Group1.groupID = Reportagem
 
 #GRUPO - CARRO
-Group2.speed = 0.5, 1.5
+#60km -> 90km 
+Group2.speed = 16.7, 25
 Group2.msgTtl = 300
-Group2.nrofHosts = 5
+Group2.nrofHosts = 10
 Group2.groupID = Carro
 
 #GRUPO - RECEPTOR
@@ -45,7 +40,7 @@ Events.nrof = 1
 Events1.class = MessageEventGenerator
 Events1.interval = 400, 400
 Events1.size = 500k, 1M
-Events1.hosts = 0,4			
+Events1.hosts = 0,12			
 Events1.prefix = M
 
 MovementModel.rngSeed = 1
@@ -58,29 +53,19 @@ MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
 MapBasedMovement.mapFile4 = data/shops.wkt
 
 #REPORTAGEM DAS MENSAGENS
-Report.nrofReports = 12
+Report.nrofReports = 5
 Report.granularity = 1
 Report.warmup = 0
-Report.messages = M21, M100, M350, M444, M560
 Report.reportDir = reports/.
-Report.report1 = AdjacencyGraphvizReport
-Report.report2 = ContactsPerHourReport
-Report.report3 = ContactTimesReport
-Report.report4 = CreatedMessagesReport
-Report.report5 = DeliveredMessagesReport
-Report.report6 = EventLogReport
-Report.report7 = MessageDelayReport
-Report.report8 = MessageDeliveryReport
-Report.report9 = MessageGraphvizReport
-Report.report10 = MessageReport
-Report.report11 = MessageStatsReport
-Report.report12 = TotalContactTimeReport
-#Report.report1 = MessageLocationReport
-
+Report.report1 = CreatedMessagesReport
+Report.report2 = DeliveredMessagesReport
+Report.report3 = EventLogReport
+Report.report4 = MessageDelayReport
+Report.report5 = MessageDeliveryReport
 
 #CONFIGURAÇÕES DE ALGUMAS CONFIGS DE PROTOCOLOS
 ProphetRouter.secondsInTimeUnit = 30
-SprayAndWaitRouter.nrofCopies = 10
+SprayAndWaitRouter.nrofCopies = 6
 SprayAndWaitRouter.binaryMode = true
 Optimization.cellSizeMult = 5
 Optimization.randomizeUpdateOrder = true
