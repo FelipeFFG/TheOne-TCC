@@ -1,0 +1,12 @@
+# time  ID  size  hopcount  deliveryTime  fromHost  toHost  remainingTtl  isResponse  path
+2826.7000 M4 575923 1 1226.7000 FastCar2 SlowCar0 279 N FastCar2->SlowCar0
+4334.6000 M2 922110 1 3534.6000 FastCar2 ReportEvent1 241 N FastCar2->ReportEvent1
+4338.2000 M7 894715 1 1538.2000 ReportEvent1 FastCar2 274 N ReportEvent1->FastCar2
+4341.9000 M5 902337 1 2341.9000 ReportEvent1 FastCar2 260 N ReportEvent1->FastCar2
+4345.4000 M3 855873 1 3145.4000 ReportEvent1 FastCar2 247 N ReportEvent1->FastCar2
+13081.3000 M8 754921 2 9881.3000 FastCar2 SlowCar0 135 N FastCar2->ReportEvent1->SlowCar0
+18300.7000 M37 948641 1 3500.7000 FastCar2 ReportEvent1 241 N FastCar2->ReportEvent1
+24021.6000 M48 683464 1 4821.6000 SlowCar0 FastCar2 219 N SlowCar0->FastCar2
+24024.7000 M54 773287 1 2424.7000 SlowCar0 FastCar2 259 N SlowCar0->FastCar2
+37954.2000 M79 716229 1 6354.2000 SlowCar0 FastCar2 194 N SlowCar0->FastCar2
+42920.9000 M85 769870 1 8920.9000 FastCar2 SlowCar0 151 N FastCar2->SlowCar0

@@ -1,0 +1,6 @@
+graph adjgraph {
+	FastCar2--ReportEvent1 [weight=2];
+	SlowCar0--ReportEvent1 [weight=1];
+	FastCar2--SlowCar0 [weight=6];
+	SlowCar0--FastCar2 [weight=6];
+}

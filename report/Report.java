@@ -68,6 +68,10 @@ public abstract class Report {
 	private String outFileName;
 	private String scenarioName;
 	
+	// GIL EDUARDO DE ANDRADE
+	private SimScenario scen;
+	// GIL EDUARDO DE ANDRADE
+	
 	/**
 	 * Constructor.
 	 * Looks for a className.output setting in the Settings and
@@ -184,6 +188,10 @@ public abstract class Report {
 		else {
 			createOutput(outFileName);
 		}
+
+		// GIL EDUARDO DE ANDRADE
+		this.scen = SimScenario.getInstance();
+		// GIL EDUARDO DE ANDRADE
 	}
 	
 	/**
@@ -417,4 +425,13 @@ public abstract class Report {
 		return format(sum2/values.size() - (E_X*E_X));
 	}
 	
+	// GIL EDUARDO DE ANDRADE
+	public SimScenario getScenario() {
+		return this.scen;
+	}
+	
+	protected double getEndTime() {
+		return this.scen.getEndTime();
+	}
+	// GIL EDUARDO DE ANDRADE
 }

@@ -1,4 +1,4 @@
-Scenario.name = default_scenario
+Scenario.name = tcc_scenario
 # Default scenarios is True
 Scenario.simulateConnections = true
 # defines the interval in which the update() function in the MessageRouter.java file has to be called. As default it is set to 0.1s.
@@ -16,48 +16,34 @@ Scenario.nrofHostGroups = 3
 # (2.7m/s = 10km/h) (8.3m/s = 30km/h) (13.9m/s = 50km/h)
 # (16.7m/s = 60km/h) (19.4m/s = 70km/h) (25m/s = 90km/h)
 
-#GRUPO - CARRO LENTO
+#Default Settings Group 
 Group.movementModel = ShortestPathMapBasedMovement
 Group.router = SprayAndWaitRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 Group.nrofInterfaces = 1
 Group.interface1 = btInterface
-Group.speed = 13.9, 16.7
 Group.msgTtl = 300
-Group.nrofHosts = 10
+Group.nrofHosts = 1
+
+#GRUPO - CARRO LENTO
 Group1.groupID = SlowCar
+Group1.speed = 13.9, 16.7
 
 #GRUPO - CARRO RAPIDO
-Group3.movementModel = ShortestPathMapBasedMovement
-Group3.router = SprayAndWaitRouter
-Group3.bufferSize = 5M
-Group3.waitTime = 0, 120
-Group3.nrofInterfaces = 1
-Group3.interface1 = btInterface
-Group3.msgTtl = 300
-Group3.nrofHosts = 10
-Group3.speed = 16.7, 25
 Group3.groupID = FastCar
+Group3.speed = 16.7, 25
 
 #GRUPO- ACIDENTE ENTRE DOIS CARROS 01
-Group2.movementModel = ShortestPathMapBasedMovement
-Group2.router = SprayAndWaitRouter
-Group2.bufferSize = 5M
-Group2.waitTime = 0, 120
-Group2.nrofInterfaces = 1
-Group2.interface1 = btInterface
+Group2.groupID = ReportEvent
 Group2.speed = 0.0, 0.0
-Group2.msgTtl = 300
-Group2.nrofHosts = 1
-Group2.groupID = ReportEvent01
 
 
 Events.nrof = 1
 Events1.class = MessageEventGenerator
-Events1.interval = 25,35
+Events1.interval = 400, 400
 Events1.size = 500k,1M
-Events1.hosts = 0,021
+Events1.hosts = 0,03
 Events1.prefix = M
 
 MovementModel.rngSeed = 1
@@ -69,11 +55,46 @@ MapBasedMovement.mapFile2 = data/main_roads.wkt
 MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
 MapBasedMovement.mapFile4 = data/shops.wkt
 
-Report.nrofReports = 2
-Report.warmup = 0
+Report.nrofReports = 12
 Report.reportDir = reports/
-Report.report1 = MessageStatsReport
-Report.report2 = MessageDeliveryReport
+
+# Generates Graphviz compatible graph from connections.
+Report.report1 = AdjacencyGraphvizReport
+
+#   This report counts the number of contacts each hour
+Report.report2 = ContactsPerHourReport
+
+#   how long they were in the range of each other
+Report.report3 = ContactTimesReport
+
+# 	Reports information about all created messages
+Report.report4 = CreatedMessagesReport
+
+#  	Report information about all delivered messages.
+Report.report5 = DeliveredMessagesReport
+
+#   Report that creates same output as the GUI's event log panel but formatted like StandardEventsReader input.
+Report.report6 = EventLogReport
+
+#   Reports delivered messages' delays (one line per delivered message) and cumulative delivery probability sorted by message delays.
+Report.report7 = MessageDelayReport
+
+#   Report for of amount of messages delivered vs created messages
+Report.report8 = MessageDeliveryReport
+
+#   Creates a graphviz compatible graph of messages that were passed.
+Report.report9 = MessageGraphvizReport
+
+#  	Message location report.
+Report.report10 = MessageReport
+
+#   Report for generating different kind of total statistics about message relaying performance.
+Report.report11 = MessageStatsReport
+
+#  	Report for total amount of contact times among hosts.
+Report.report12 = TotalContactTimeReport
+
+
 ProphetRouter.secondsInTimeUnit = 30
 SprayAndWaitRouter.nrofCopies = 10
 SprayAndWaitRouter.binaryMode = true

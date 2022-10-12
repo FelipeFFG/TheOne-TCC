@@ -1,0 +1,15 @@
+/* scenario tcc_scenario
+11 messages delivered at sim time 43200.09999965185 */
+digraph msggraph {
+	FastCar2->SlowCar0;
+	FastCar2->ReportEvent1;
+	ReportEvent1->FastCar2;
+	ReportEvent1->FastCar2;
+	ReportEvent1->FastCar2;
+	FastCar2->ReportEvent1->SlowCar0;
+	FastCar2->ReportEvent1;
+	SlowCar0->FastCar2;
+	SlowCar0->FastCar2;
+	SlowCar0->FastCar2;
+	FastCar2->SlowCar0;
+}
