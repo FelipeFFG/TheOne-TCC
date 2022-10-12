@@ -8,42 +8,39 @@ btInterface.type = SimpleBroadcastInterface
 btInterface.transmitSpeed = 250k
 btInterface.transmitRange = 3
 
-highspeedInterface.type = SimpleBroadcastInterface
-highspeedInterface.transmitSpeed = 10M
-highspeedInterface.transmitRange = 50
+Scenario.nrofHostGroups = 3
 
-Scenario.nrofHostGroups = 2
-
-#GRUPO - CARRO
+#CONFIGURACOE GERAIS DOS GRUPOS
 Group.movementModel = ShortestPathMapBasedMovement
 Group.router = SprayAndWaitRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 Group.nrofInterfaces = 1
 Group.interface1 = btInterface
-Group.speed = 0.5, 1.5
 Group.msgTtl = 300
-Group.nrofHosts = 40
-Group1.groupID = Carro
 
 #GRUPO- REFERENTE A REPORTAGEM DE PROBLEMAS NA VIA
-Group2.movementModel = ShortestPathMapBasedMovement
-Group2.router = SprayAndWaitRouter
-Group2.bufferSize = 5M
-Group2.waitTime = 0, 120
-Group2.nrofInterfaces = 1
-Group2.interface1 = btInterface
-Group2.speed = 0.0, 0.0
+Group1.speed = 0.0,0.0
+Group1.nrofHosts = 1
+Group1.groupID = Reportagem
+
+#GRUPO - CARRO
+#60km -> 90km 
+Group2.speed = 16.7, 25
 Group2.msgTtl = 300
-Group2.nrofHosts = 1
-Group2.groupID = Reportagem
+Group2.nrofHosts = 10
+Group2.groupID = Carro
 
+#GRUPO - RECEPTOR
+Group3.speed = 0.0,0.0
+Group3.nrofHosts = 1
+Group3.groupID = Receptor
 
-Events.nrof = 1
+Events.nrof = 1 			
 Events1.class = MessageEventGenerator
-Events1.interval = 25,35
-Events1.size = 500k,1M
-Events1.hosts = 0,041
+Events1.interval = 400, 400
+Events1.size = 500k, 1M
+Events1.hosts = 0,12			
 Events1.prefix = M
 
 MovementModel.rngSeed = 1
@@ -55,20 +52,27 @@ MapBasedMovement.mapFile2 = data/main_roads.wkt
 MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
 MapBasedMovement.mapFile4 = data/shops.wkt
 
-Report.nrofReports = 1
+#REPORTAGEM DAS MENSAGENS
+Report.nrofReports = 5
+Report.granularity = 1
 Report.warmup = 0
-Report.reportDir = reports/
-Report.report1 = MessageStatsReport
+Report.reportDir = reports/.
+Report.report1 = CreatedMessagesReport
+Report.report2 = DeliveredMessagesReport
+Report.report3 = EventLogReport
+Report.report4 = MessageDelayReport
+Report.report5 = MessageDeliveryReport
+
+#CONFIGURAÇÕES DE ALGUMAS CONFIGS DE PROTOCOLOS
 ProphetRouter.secondsInTimeUnit = 30
-SprayAndWaitRouter.nrofCopies = 10
+SprayAndWaitRouter.nrofCopies = 6
 SprayAndWaitRouter.binaryMode = true
 Optimization.cellSizeMult = 5
 Optimization.randomizeUpdateOrder = true
 
-
+#CONFIGURACOES DA INTERFACE GRAFICA
 GUI.UnderlayImage.fileName = data/RegiaoDoChapeu.png
 GUI.UnderlayImage.offset = 0, 0
 GUI.UnderlayImage.scale = 5
 GUI.UnderlayImage.rotate = 0
-
 GUI.EventLogPanel.nrofEvents = 100
