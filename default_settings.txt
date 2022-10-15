@@ -8,7 +8,7 @@ btInterface.type = SimpleBroadcastInterface
 btInterface.transmitSpeed = 250k
 btInterface.transmitRange = 3
 
-Scenario.nrofHostGroups = 3
+Scenario.nrofHostGroups = 4
 
 #CONFIGURACOE GERAIS DOS GRUPOS
 Group.movementModel = ShortestPathMapBasedMovement
@@ -20,9 +20,10 @@ Group.interface1 = btInterface
 Group.msgTtl = 300
 
 #GRUPO- REFERENTE A REPORTAGEM DE PROBLEMAS NA VIA
-Group1.speed = 0.0,0.0
+Group1.movementModel = StationaryMovement
+Group1.nodeLocation = 2253, 1090
 Group1.nrofHosts = 1
-Group1.groupID = Reportagem
+Group1.groupID = Acidente
 
 #GRUPO - CARRO
 #60km -> 90km 
@@ -30,27 +31,37 @@ Group2.speed = 16.7, 25
 Group2.msgTtl = 300
 Group2.nrofHosts = 10
 Group2.groupID = Carro
+Group2.okmaps = 1
+Group2.movementModel = MapRouteMovement
+Group2.routeFile = data/tram10.wkt
+Group2.routeType = 1
 
-#GRUPO - RECEPTOR
-Group3.speed = 0.0,0.0
+#GRUPO - RECEPTOR - BAIXO
+Group3.movementModel = StationaryMovement
+Group3.nodeLocation = 2601, 1858
 Group3.nrofHosts = 1
-Group3.groupID = Receptor
+Group3.groupID = ReceptorBaixo
+
+#GRUPO - RECEPTOR - CIMA
+Group4.movementModel = StationaryMovement
+Group4.nodeLocation = 1757, 332
+Group4.nrofHosts = 1
+Group4.groupID = ReceptorCima
 
 Events.nrof = 1 			
 Events1.class = MessageEventGenerator
 Events1.interval = 400, 400
-Events1.size = 500k, 1M
-Events1.hosts = 0,12			
+Events1.size = 0.192k, 0.202k
+Events1.hosts = 0,13			
 Events1.prefix = M
 
 MovementModel.rngSeed = 1
 MovementModel.worldSize = 4500, 3400
 MovementModel.warmup = 1000
-MapBasedMovement.nrofMapFiles = 4
+MapBasedMovement.nrofMapFiles = 2
 MapBasedMovement.mapFile1 = data/roads.wkt
 MapBasedMovement.mapFile2 = data/main_roads.wkt
-MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
-MapBasedMovement.mapFile4 = data/shops.wkt
+
 
 #REPORTAGEM DAS MENSAGENS
 Report.nrofReports = 5
