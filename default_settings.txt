@@ -11,7 +11,6 @@ btInterface.transmitRange = 3
 Scenario.nrofHostGroups = 4
 
 #CONFIGURACOE GERAIS DOS GRUPOS
-Group.movementModel = ShortestPathMapBasedMovement
 Group.router = SprayAndWaitRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
@@ -28,7 +27,6 @@ Group1.groupID = Acidente
 #GRUPO - CARRO
 #60km -> 90km 
 Group2.speed = 16.7, 25
-Group2.msgTtl = 300
 Group2.nrofHosts = 10
 Group2.groupID = Carro
 Group2.okmaps = 1
@@ -36,17 +34,17 @@ Group2.movementModel = MapRouteMovement
 Group2.routeFile = data/tram10.wkt
 Group2.routeType = 1
 
-#GRUPO - RECEPTOR - BAIXO
+#GRUPO - RECEPTOR
 Group3.movementModel = StationaryMovement
 Group3.nodeLocation = 2601, 1858
 Group3.nrofHosts = 1
-Group3.groupID = ReceptorBaixo
+Group3.groupID = ReceptorSul
 
-#GRUPO - RECEPTOR - CIMA
+#GRUPO - RECEPTOR
 Group4.movementModel = StationaryMovement
 Group4.nodeLocation = 1757, 332
 Group4.nrofHosts = 1
-Group4.groupID = ReceptorCima
+Group4.groupID = ReceptorNorte
 
 Events.nrof = 1 			
 Events1.class = MessageEventGenerator
